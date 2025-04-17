@@ -10,9 +10,7 @@ async function start() {
             const temp = document.createElement('li');
             temp.textContent = films[i].title;
             temp.addEventListener('click', e => {
-                window.location.href = "./dop.html";
-                const data = {url: films[i].url};
-                localStorage.setItem("data", JSON.stringify(data));
+                window.location.href = `./dop.html?id=${films[i].url.slice(-2,-1)}`;
             })
             ul.appendChild(temp);
         }

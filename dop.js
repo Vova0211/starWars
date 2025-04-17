@@ -1,10 +1,12 @@
 document.getElementById("back").addEventListener('click', e => {
     window.location.href = "./index.html";
 })
-const localData = JSON.parse(localStorage.getItem("data"))
 async function start() {
     try {
-        const ans = await fetch(localData.url);
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+        const url = `https://swapi.dev/api/films/${id}/`
+        const ans = await fetch(url);
         console.log(`Status code: ${ans.status}`);
         const data = await ans.json();
         document.title = data.title;
@@ -12,7 +14,7 @@ async function start() {
 
         document.querySelector(".title").textContent = data.title;
         document.querySelector(".numb").textContent = `Номер эпизода:   ${data.episode_id}`;
-        document.querySelector(".opening").textContent = data.opening_crawl;
+        document.querySelector(".opening").innerHTML = data.opening_crawl.replaceAll("\r", "<br>");
         for(let i = 0; i < data.planets.length; i++) {
             const pl = await (await fetch(data.planets[i])).json();
             const name = document.createElement('li');
