@@ -1,3 +1,15 @@
 ul {
-    font-size: 40px;
+    font-size: 60px;
+    list-style: none;
+    text-align: center;
+    color: gold;
+}
+li {
+    border: 3px solid gold;
+    cursor: pointer;
+    margin: auto;
+    margin-bottom: 15px;
+}
+body {
+    background-color: black;
 }

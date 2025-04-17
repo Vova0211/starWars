@@ -13,7 +13,7 @@ async function start() {
         console.log(data);
 
         document.querySelector(".title").textContent = data.title;
-        document.querySelector(".numb").textContent = `Номер эпизода:   ${data.episode_id}`;
+        document.querySelector(".numb").textContent = `Episode number:   ${data.episode_id}`;
         document.querySelector(".opening").innerHTML = data.opening_crawl.replaceAll("\r", "<br>");
         for(let i = 0; i < data.planets.length; i++) {
             const pl = await (await fetch(data.planets[i])).json();
@@ -29,7 +29,13 @@ async function start() {
             name.textContent = pl.name;
             document.getElementById("species").append(name);
         }
-
+        for(let i = 0; i < data.characters.length; i++) {
+            const pl = await (await fetch(data.characters[i])).json();
+            const name = document.createElement('li');
+            name.classList.add("li_c");
+            name.textContent = pl.name;
+            document.getElementById("characters").append(name);
+        }
     } catch(error) {
         console.log(error);
     }

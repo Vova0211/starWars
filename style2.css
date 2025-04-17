@@ -13,12 +13,26 @@
 }
 .opening {
   display: block;
+  font-size: 22px;
 }
 .li {
-  font-size: 24px;
+  font-size: 22px;
   text-align: center;
   list-style-type: none;
 }
-#planets, #species {
+.ul{
   padding: 0;
+}
+#characters {
+  gap: 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+button {
+  border: 1px solid gold;
+  background-color: gold;
+}
+body {
+  background-color: black;
+  color: gold;
 }
